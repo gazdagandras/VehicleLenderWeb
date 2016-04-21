@@ -7,6 +7,7 @@ import java.util.logging.Level;
 import java.util.logging.Logger;
 import javax.inject.Named;
 import javax.enterprise.context.ApplicationScoped;
+import javax.inject.Inject;
 import javax.xml.parsers.ParserConfigurationException;
 import org.xml.sax.SAXException;
 import vehiclelender.Site;
@@ -21,6 +22,9 @@ import vehiclelender.vehicle.Car;
 public class VehicleLenderApplicationBean {
 
     private Site site = new Site("Kaposvár", "Füredi út 234.");
+    
+    @Inject
+    private AddNewCarBean addNewCarBean;
     
     /**
      * Creates a new instance of VehicleLenderApplicationBean
@@ -41,5 +45,13 @@ public class VehicleLenderApplicationBean {
         return site;
     }
     
-    
+    public void addNewCar() {
+        site.addCar(
+                addNewCarBean.getManufacturer(),
+                addNewCarBean.getType(),
+                addNewCarBean.getColor(),
+                addNewCarBean.getYearOfManufacture()
+        );
+        addNewCarBean.clear();
+    }
 }

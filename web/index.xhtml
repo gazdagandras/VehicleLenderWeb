@@ -28,6 +28,19 @@
                     #{car.yearOfManufacture}
             </h:column>
         </h:dataTable>
+        
+        <h2>Add new car:</h2>
+        <h:form>
+            Manufacturer: <h:inputText value="#{addNewCarBean.manufacturer}"></h:inputText>
+            <br />
+            Type: <h:inputText value="#{addNewCarBean.type}"></h:inputText>
+            <br />
+            Color: <h:inputText value="#{addNewCarBean.color}"></h:inputText>
+            <br />
+            Year of manufacture: <h:inputText value="#{addNewCarBean.yearOfManufacture}"></h:inputText>
+            <br />
+            <h:commandButton value="Add new car" action="#{vehicleLenderApplicationBean.addNewCar()}"></h:commandButton>
+        </h:form>
 
     </h:body>
 </html>
