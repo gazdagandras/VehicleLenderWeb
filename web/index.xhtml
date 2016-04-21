@@ -10,7 +10,7 @@
         <h1>Vehicle lender</h1>
         <h2>Cars</h2>
 
-        <h:dataTable value="#{vehicleLenderApplicationBean.cars}" var="car">
+        <h:dataTable value="#{vehicleLenderApplicationBean.site.cars}" var="car">
             <h:column>
                 <f:facet name="header">Manufacturer</f:facet>
                     #{car.manufacturer}
