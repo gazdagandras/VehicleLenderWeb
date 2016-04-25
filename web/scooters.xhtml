@@ -8,6 +8,9 @@
     </h:head>
     <h:body>
         <h1>Vehicle lender</h1>
+        <h:link value="Cars" outcome="index" class="menu-item" />
+        <h:link value="Scooters" outcome="scooters" class="menu-item" />
+
         <h2>Scooters</h2>
         
         <h:dataTable value="#{vehicleLenderApplicationBean.site.scooters}" var="scooter">

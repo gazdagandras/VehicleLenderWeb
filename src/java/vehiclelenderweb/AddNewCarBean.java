@@ -16,6 +16,14 @@ public class AddNewCarBean {
     private String color;
     private Integer yearOfManufacture;
 
+    private String[] colors = {
+        "red", "blue", "white", "black", "yellow"
+    };
+
+    public String[] getColors() {
+        return colors;
+    }
+    
     public String getManufacturer() {
         return manufacturer;
     }
