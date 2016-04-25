@@ -1,6 +1,12 @@
 package vehiclelenderweb;
 
+import java.io.File;
 import java.io.IOException;
+import java.io.InputStream;
+import java.io.InputStreamReader;
+import java.io.Reader;
+import java.net.URISyntaxException;
+import java.net.URL;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.logging.Level;
@@ -31,7 +37,7 @@ public class VehicleLenderApplicationBean {
      */
     public VehicleLenderApplicationBean() {
         try {
-            site.loadVehiclesFromFile("/home/rych/vehicles1.xml");
+            site.loadVehiclesFromPackage("/vehiclelender/data/vehicles1.xml");
         } catch (ParserConfigurationException ex) {
             Logger.getLogger(VehicleLenderApplicationBean.class.getName()).log(Level.SEVERE, null, ex);
         } catch (SAXException ex) {
