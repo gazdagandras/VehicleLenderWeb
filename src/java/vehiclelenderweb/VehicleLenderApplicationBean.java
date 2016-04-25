@@ -32,6 +32,9 @@ public class VehicleLenderApplicationBean {
     @Inject
     private AddNewCarBean addNewCarBean;
     
+    @Inject
+    private AddNewScooterBean addNewScooterBean;
+    
     /**
      * Creates a new instance of VehicleLenderApplicationBean
      */
@@ -60,5 +63,16 @@ public class VehicleLenderApplicationBean {
                 addNewCarBean.getYearOfManufacture()
         );
         addNewCarBean.clear();
+    }
+    
+    public void addNewScooter() {
+        site.addScooter(
+                addNewScooterBean.getManufacturer(),
+                addNewScooterBean.getType(),
+                addNewScooterBean.getColor(),
+                addNewScooterBean.getYearOfManufacture(),
+                addNewScooterBean.getWithHelmet()
+        );
+        addNewScooterBean.clear();
     }
 }

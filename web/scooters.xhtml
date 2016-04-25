@@ -28,6 +28,22 @@
                     #{scooter.yearOfManufacture}
             </h:column>
         </h:dataTable>
+        
+        <h2>Add new scooter:</h2>
+        <h:form>
+            Manufacturer: <h:inputText value="#{addNewScooterBean.manufacturer}"></h:inputText>
+            <br />
+            Type: <h:inputText value="#{addNewScooterBean.type}"></h:inputText>
+            <br />
+            Color: <h:inputText value="#{addNewScooterBean.color}"></h:inputText>
+            <br />
+            Year of manufacture: <h:inputText value="#{addNewScooterBean.yearOfManufacture}"></h:inputText>
+            <br />
+            With helmet: <h:selectBooleanCheckbox value="#{addNewScooterBean.withHelmet}"></h:selectBooleanCheckbox>
+            <br />
+            <h:commandButton value="Add new car" action="#{vehicleLenderApplicationBean.addNewScooter()}"></h:commandButton>
+        </h:form>
+        
     </h:body>
 </html>
 
