@@ -37,7 +37,8 @@ public class VehicleLenderApplicationBean {
      */
     public VehicleLenderApplicationBean() {
         try {
-            site.loadVehiclesFromPackage("/vehiclelender/data/vehicles1.xml");
+            site.loadVehiclesFromPackage(
+                    "/vehiclelender/data/vehicles1.xml");
         } catch (ParserConfigurationException ex) {
             Logger.getLogger(VehicleLenderApplicationBean.class.getName()).log(Level.SEVERE, null, ex);
         } catch (SAXException ex) {
