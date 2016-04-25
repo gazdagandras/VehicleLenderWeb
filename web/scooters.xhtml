@@ -10,22 +10,22 @@
         <h1>Vehicle lender</h1>
         <h2>Scooters</h2>
         
-        <h:dataTable value="#{vehicleLenderApplicationBean.site.cars}" var="car">
+        <h:dataTable value="#{vehicleLenderApplicationBean.site.scooters}" var="scooter">
             <h:column>
                 <f:facet name="header">Manufacturer</f:facet>
-                    #{car.manufacturer}
+                    #{scooter.manufacturer}
             </h:column>
             <h:column>
                 <f:facet name="header">Type</f:facet>
-                    #{car.type}
+                    #{scooter.type}
             </h:column>
             <h:column>
                 <f:facet name="header">Color</f:facet>
-                    #{car.color}
+                    #{scooter.color}
             </h:column>
             <h:column>
                 <f:facet name="header">Year</f:facet>
-                    #{car.yearOfManufacture}
+                    #{scooter.yearOfManufacture}
             </h:column>
         </h:dataTable>
     </h:body>
