@@ -36,9 +36,15 @@
 
         <h2>Add new car:</h2>
         <h:form>
-            Manufacturer: <h:inputText value="#{addNewCarBean.manufacturer}"></h:inputText>
+            Manufacturer: 
+            <h:inputText id="Manufacturer" value="#{addNewCarBean.manufacturer}">
+                <f:validateLength minimum="3"></f:validateLength>
+            </h:inputText>
             <br />
-            Type: <h:inputText value="#{addNewCarBean.type}"></h:inputText>
+            Type: 
+            <h:inputText id="Type" value="#{addNewCarBean.type}">
+                <f:validateRequired></f:validateRequired>
+            </h:inputText>
             <br />
             Color:
             <h:selectOneMenu value="#{addNewCarBean.color}">
@@ -51,9 +57,16 @@
                                itemLabel="#{c}" itemValue="#{c}"></f:selectItems>
             </h:selectOneMenu>
             <br />
-            Year of manufacture: <h:inputText value="#{addNewCarBean.yearOfManufacture}"></h:inputText>
+            Year of manufacture: 
+            <h:inputText id="Year" value="#{addNewCarBean.yearOfManufacture}">
+                <f:validateLength minimum="4" maximum="4"></f:validateLength>
+                <f:validateRequired></f:validateRequired>
+            </h:inputText>
             <br />
             <h:commandButton value="Add new car" action="#{vehicleLenderApplicationBean.addNewCar()}"></h:commandButton>
+            <h:message for="Manufacturer" style="color:red" />
+            <h:message for="Type" style="color:red" />
+            <h:message for="Year" style="color:red" />
         </h:form>
 
     </h:body>
