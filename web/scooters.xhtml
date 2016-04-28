@@ -4,49 +4,90 @@
       xmlns:h="http://xmlns.jcp.org/jsf/html"
       xmlns:f="http://xmlns.jcp.org/jsf/core">
     <h:head>
+        <!-- Latest compiled and minified CSS -->
+        <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css" integrity="sha384-1q8mTJOASx8j1Au+a5WDVnPi2lkFfwwEAa8hDDdjZlpLegxhjVME1fgjWPGmkzs7" crossorigin="anonymous" />
+
+        <!-- Optional theme -->
+        <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap-theme.min.css" integrity="sha384-fLW2N01lMqjakBkx3l/M9EahuwpSfeNvV63J5ezn3uZzapT0u7EYsXMjQV+0En5r" crossorigin="anonymous" />
+
+        <!-- Latest compiled and minified JavaScript -->
+        <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js" integrity="sha384-0mSbJDEHialfmuBBQP6A4Qrprq5OVfW37PRR3j5ELqxss1yVqOtnepnHVP9aJ7xS" crossorigin="anonymous"></script>
+
         <title>Vehicle lender</title>
     </h:head>
     <h:body>
-        <h1>Vehicle lender</h1>
-        <h:link value="Cars" outcome="index" class="menu-item" />
-        <h:link value="Scooters" outcome="scooters" class="menu-item" />
+        <div class="container">
+            <div class="row">
+                <div class="col-md-12">
+                    <h1>Vehicle lender</h1>
+                    <ul class="nav nav-pills">
+                        <li role="presentation">
+                            <h:link value="Cars" outcome="index" class="menu-item" />
+                        </li>
+                        <li role="presentation" class="active">
+                            <h:link value="Scooters" outcome="scooters" class="menu-item" />
+                        </li>
+                    </ul>
+                </div>
+            </div>
 
-        <h2>Scooters</h2>
-        
-        <h:dataTable value="#{vehicleLenderApplicationBean.site.scooters}" var="scooter">
-            <h:column>
-                <f:facet name="header">Manufacturer</f:facet>
-                    #{scooter.manufacturer}
-            </h:column>
-            <h:column>
-                <f:facet name="header">Type</f:facet>
-                    #{scooter.type}
-            </h:column>
-            <h:column>
-                <f:facet name="header">Color</f:facet>
-                    #{scooter.color}
-            </h:column>
-            <h:column>
-                <f:facet name="header">Year</f:facet>
-                    #{scooter.yearOfManufacture}
-            </h:column>
-        </h:dataTable>
-        
-        <h2>Add new scooter:</h2>
-        <h:form>
-            Manufacturer: <h:inputText value="#{addNewScooterBean.manufacturer}"></h:inputText>
-            <br />
-            Type: <h:inputText value="#{addNewScooterBean.type}"></h:inputText>
-            <br />
-            Color: <h:inputText value="#{addNewScooterBean.color}"></h:inputText>
-            <br />
-            Year of manufacture: <h:inputText value="#{addNewScooterBean.yearOfManufacture}"></h:inputText>
-            <br />
-            With helmet: <h:selectBooleanCheckbox value="#{addNewScooterBean.withHelmet}"></h:selectBooleanCheckbox>
-            <br />
-            <h:commandButton value="Add new car" action="#{vehicleLenderApplicationBean.addNewScooter()}"></h:commandButton>
-        </h:form>
-        
+            <div class="row">
+                <div class="col-md-12">
+
+                    <h2>Scooters</h2>
+
+                    <h:dataTable value="#{vehicleLenderApplicationBean.site.scooters}" var="scooter"
+                                 class="table table-striped">
+                        <h:column>
+                            <f:facet name="header">Manufacturer</f:facet>
+                                #{scooter.manufacturer}
+                        </h:column>
+                        <h:column>
+                            <f:facet name="header">Type</f:facet>
+                                #{scooter.type}
+                        </h:column>
+                        <h:column>
+                            <f:facet name="header">Color</f:facet>
+                                #{scooter.color}
+                        </h:column>
+                        <h:column>
+                            <f:facet name="header">Year</f:facet>
+                                #{scooter.yearOfManufacture}
+                        </h:column>
+                    </h:dataTable>
+
+                </div>
+            </div>
+
+            <div class="row">
+                <div class="col-md-6 col-md-offset-3">
+                    <h2>Add new scooter:</h2>
+                    <h:form>
+                        <label for="Manufacturer">Manufacturer:</label>
+                        <h:inputText id="Manufacturer" class="form-control" value="#{addNewScooterBean.manufacturer}"></h:inputText>
+
+                        <label for="Type">Type:</label>
+                        <h:inputText id="Type" class="form-control" value="#{addNewScooterBean.type}"></h:inputText>
+
+                        <label for="Color">Color:</label>
+                        <h:inputText id="Color" class="form-control" value="#{addNewScooterBean.color}"></h:inputText>
+
+                        <label for="Year">Year of manufacture:</label>
+                        <h:inputText id="Year" class="form-control" value="#{addNewScooterBean.yearOfManufacture}"></h:inputText>
+
+                        <div class="form-group">
+                            <label>
+                                With helmet:
+                                <h:selectBooleanCheckbox value="#{addNewScooterBean.withHelmet}"></h:selectBooleanCheckbox>
+                            </label>
+                        </div>
+
+                        <h:commandButton class="btn btn-default" value="Add new car" action="#{vehicleLenderApplicationBean.addNewScooter()}"></h:commandButton>
+                    </h:form>
+                </div>
+            </div>
+        </div>
+
     </h:body>
 </html>
 

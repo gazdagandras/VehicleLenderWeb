@@ -6,76 +6,122 @@
       xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
       xmlns:c="http://xmlns.jcp.org/jsp/jstl/core">
     <h:head>
+        <!-- Latest compiled and minified CSS -->
+        <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css" integrity="sha384-1q8mTJOASx8j1Au+a5WDVnPi2lkFfwwEAa8hDDdjZlpLegxhjVME1fgjWPGmkzs7" crossorigin="anonymous" />
+
+        <!-- Optional theme -->
+        <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap-theme.min.css" integrity="sha384-fLW2N01lMqjakBkx3l/M9EahuwpSfeNvV63J5ezn3uZzapT0u7EYsXMjQV+0En5r" crossorigin="anonymous" />
+
+        <!-- Latest compiled and minified JavaScript -->
+        <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js" integrity="sha384-0mSbJDEHialfmuBBQP6A4Qrprq5OVfW37PRR3j5ELqxss1yVqOtnepnHVP9aJ7xS" crossorigin="anonymous"></script>
+
         <title>Vehicle lender</title>
     </h:head>
     <h:body>
-        <h1>Vehicle lender</h1>
-        <h:link value="Cars" outcome="index" class="menu-item" />
-        <h:link value="Scooters" outcome="scooters" class="menu-item" />
+        <div class="container">
+            <div class="row">
+                <div class="col-md-12">
+                    <h1>Vehicle lender</h1>
+                    <ul class="nav nav-pills">
+                        <li role="presentation" class="active">
+                            <h:link value="Cars" outcome="index" class="menu-item" />
+                        </li>
+                        <li role="presentation">
+                            <h:link value="Scooters" outcome="scooters" class="menu-item" />
+                        </li>
+                    </ul>
+                </div>
+            </div>
 
-        <h2>Cars</h2>
+            <div class="row">
+                <div class="col-md-12">
+                    <h2>Cars</h2>
 
-        <h:dataTable value="#{vehicleLenderApplicationBean.site.cars}" var="car">
-            <h:column>
-                <f:facet name="header">Manufacturer</f:facet>
-                    #{car.manufacturer}
-            </h:column>
-            <h:column>
-                <f:facet name="header">Type</f:facet>
-                    #{car.type}
-            </h:column>
-            <h:column>
-                <f:facet name="header">Color</f:facet>
-                    #{car.color}
-            </h:column>
-            <h:column>
-                <f:facet name="header">Year</f:facet>
-                    #{car.yearOfManufacture}
-            </h:column>
-        </h:dataTable>
+                    <h:dataTable value="#{vehicleLenderApplicationBean.site.cars}" var="car"
+                                 class="table table-striped">
+                        <h:column>
+                            <f:facet name="header">Manufacturer</f:facet>
+                                #{car.manufacturer}
+                        </h:column>
+                        <h:column>
+                            <f:facet name="header">Type</f:facet>
+                                #{car.type}
+                        </h:column>
+                        <h:column>
+                            <f:facet name="header">Color</f:facet>
+                                #{car.color}
+                        </h:column>
+                        <h:column>
+                            <f:facet name="header">Year</f:facet>
+                                #{car.yearOfManufacture}
+                        </h:column>
+                    </h:dataTable>
+                </div>
+            </div>
 
-        <h2>Add new car:</h2>
-        <h:form>
-            Manufacturer: 
-            <h:inputText id="Manufacturer" value="#{addNewCarBean.manufacturer}">
-                <f:validateLength minimum="3"></f:validateLength>
-            </h:inputText>
-            <br />
-            Type: 
-            <h:inputText id="Type" value="#{addNewCarBean.type}">
-                <f:validateRequired></f:validateRequired>
-            </h:inputText>
-            <br />
-            Color:
-            <h:selectOneMenu value="#{addNewCarBean.color}">
-                <!--<ui:repeat value="#{addNewCarBean.colors}" var="c">-->
-                <!--<c:forEach items="#{addNewCarBean.colors}" var="c">-->
-                    <!--<f:selectItem itemValue="#{c}" itemLabel="#{c}" />-->
-                <!--</c:forEach>-->
-                <!--</ui:repeat>-->
-                <f:selectItems value="#{addNewCarBean.colors}" var="c"
-                               itemLabel="#{c}" itemValue="#{c}"></f:selectItems>
-            </h:selectOneMenu>
-            <br />
-            Year of manufacture: 
-            <h:inputText id="Year" value="#{addNewCarBean.yearOfManufacture}">
-                <f:validateLength minimum="4" maximum="4"></f:validateLength>
-                <f:validateRequired></f:validateRequired>
-            </h:inputText>
-            <br />
-            <h:commandButton value="Add new car" action="#{vehicleLenderApplicationBean.addNewCar()}"></h:commandButton>
-            <h:message for="Manufacturer" style="color:red" />
-            <h:message for="Type" style="color:red" />
-            <h:message for="Year" style="color:red" />
-        </h:form>
+            <div class="row">
+                <div class="col-md-6">
+                    <h2>Add new car:</h2>
+                    <h:form>
+                        <div class="form-group">
+                            <label for="Manufacturer">Manufacturer:</label>
+                            <h:inputText id="Manufacturer" class="form-control" value="#{addNewCarBean.manufacturer}"
+                                         validatorMessage="Please type a manufacturer name (min. 3 characters)!">
+                                <f:validateLength minimum="3"></f:validateLength>
+                                <f:validateRequired></f:validateRequired>
+                            </h:inputText>
+                            <h:message for="Manufacturer" style="color:red" />
+                        </div>
 
-        <h2>Upload xml file:</h2>
-        <h:form id="form" enctype="multipart/form-data">
-            <h:inputFile id="file" value="#{uploadXMLBean.file}"/>
-            <h:commandButton value="Upload"
-                             action="#{uploadXMLBean.upload()}"/>
-        </h:form>
+                        <div class="form-group">
+                            <label for="Type">Type:</label>
+                            <h:inputText id="Type" class="form-control" value="#{addNewCarBean.type}"
+                                         validatorMessage="Type is required!">
+                                <f:validateRequired></f:validateRequired>
+                            </h:inputText>
+                            <h:message for="Type" style="color:red" />
+                        </div>
 
+                        <div class="form-group">
+                            <label for="color">Color:</label>
+                            <h:selectOneMenu id="color" class="form-control" value="#{addNewCarBean.color}">
+                                <!--<ui:repeat value="#{addNewCarBean.colors}" var="c">-->
+                                <!--<c:forEach items="#{addNewCarBean.colors}" var="c">-->
+                                    <!--<f:selectItem itemValue="#{c}" itemLabel="#{c}" />-->
+                                <!--</c:forEach>-->
+                                <!--</ui:repeat>-->
+                                <f:selectItems value="#{addNewCarBean.colors}" var="c"
+                                               itemLabel="#{c}" itemValue="#{c}"></f:selectItems>
+                            </h:selectOneMenu>
+                        </div>
+
+                        <div class="form-group">
+                            <label for="Year">Year of manufacture:</label>
+                            <h:inputText id="Year" class="form-control" value="#{addNewCarBean.yearOfManufacture}"
+                                         validatorMessage="Please type a year (4 digits)!">
+                                <f:validateLength minimum="4" maximum="4"></f:validateLength>
+                                <f:validateRequired></f:validateRequired>
+                            </h:inputText>
+                            <h:message for="Year" style="color:red" />
+                        </div>
+
+                        <h:commandButton class="btn btn-default" value="Add new car" action="#{vehicleLenderApplicationBean.addNewCar()}"></h:commandButton>
+                    </h:form>
+                </div>
+
+                <div class="col-md-6">
+                    <h2>Upload xml file:</h2>
+                    <h:form id="form" enctype="multipart/form-data">
+                        <div class="form-group">
+                            <label for="file">XML file:</label>
+                            <h:inputFile id="file" value="#{uploadXMLBean.file}" />
+                        </div>
+                        <h:commandButton value="Upload" class="btn btn-default"
+                                         action="#{uploadXMLBean.upload()}"/>
+                    </h:form>
+                </div>
+            </div>
+        </div>        
     </h:body>
 </html>
 
