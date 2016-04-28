@@ -69,6 +69,13 @@
             <h:message for="Year" style="color:red" />
         </h:form>
 
+        <h2>Upload xml file:</h2>
+        <h:form id="form" enctype="multipart/form-data">
+            <h:inputFile id="file" value="#{uploadXMLBean.file}"/>
+            <h:commandButton value="Upload"
+                             action="#{uploadXMLBean.upload()}"/>
+        </h:form>
+
     </h:body>
 </html>
 
